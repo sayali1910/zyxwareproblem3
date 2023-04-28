@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getBookList } from "../../api/BookAPI";
 import { BookData } from "../../interface";
 import styles from "./index.module.css";
+import {Link} from "react-router-dom";
 const BookList = () => {
   const [bookList, setBookList] = useState<Array<BookData>>([]);
   const [searchTitle, setSearchTitle] = useState<string>("");
@@ -131,7 +132,7 @@ const BookList = () => {
             return (
               <tr key={index}>
                 <th scope="row">{book.id}</th>
-                <td>{book.title}</td>
+                <td><Link to={`/book?id=${book.id}`}>{book.title}</Link></td>
                 <td>{book.author}</td>
                 <td>{handleDateFormat(book.publicationDate)}</td>
               </tr>
