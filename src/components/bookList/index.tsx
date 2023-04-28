@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getBookList } from "../../api/BookAPI";
 import { BookData } from "../../interface";
 import styles from "./index.module.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 const BookList = () => {
   const [bookList, setBookList] = useState<Array<BookData>>([]);
   const [searchTitle, setSearchTitle] = useState<string>("");
@@ -26,36 +26,6 @@ const BookList = () => {
       return 0;
     });
     setBookList(sortedList);
-    // let toBeOrderBookList: Array<BookData> = [];
-    // if (order === "up") {
-    //   let authorList: Array<string> = [];
-    //   bookList.map((book: BookData) => {
-    //     authorList.push(book.author);
-    //   });
-    //   authorList = authorList.sort();
-    //   authorList.map((author: string) => {
-    //     bookList.map((book: BookData) => {
-    //       if (book.author === author) {
-    //         toBeOrderBookList.push(book);
-    //       }
-    //     });
-    //   });
-    //   setBookList(toBeOrderBookList);
-    // } else {
-    //   let authorList: Array<string> = [];
-    //   bookList.map((book: BookData) => {
-    //     authorList.push(book.author);
-    //   });
-    //   authorList = authorList.sort().reverse();
-    //   authorList.map((author: string) => {
-    //     bookList.map((book: BookData) => {
-    //       if (book.author === author) {
-    //         toBeOrderBookList.push(book);
-    //       }
-    //     });
-    //   });
-    //   setBookList(toBeOrderBookList);
-    // }
   };
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
@@ -76,7 +46,7 @@ const BookList = () => {
     const formattedDate = `${dateTobeFormated.getDate()}/${
       dateTobeFormated.getMonth() + 1
     }/${dateTobeFormated.getFullYear()}`;
-    return formattedDate
+    return formattedDate;
   };
   return (
     <div className={styles.bookContainer}>
@@ -132,7 +102,9 @@ const BookList = () => {
             return (
               <tr key={index}>
                 <th scope="row">{book.id}</th>
-                <td><Link to={`/book?id=${book.id}`}>{book.title}</Link></td>
+                <td>
+                  <Link to={`/book?id=${book.id}`}>{book.title}</Link>
+                </td>
                 <td>{book.author}</td>
                 <td>{handleDateFormat(book.publicationDate)}</td>
               </tr>
